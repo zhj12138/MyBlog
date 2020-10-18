@@ -1,10 +1,23 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        {% block title %}
+            Snow zhao's Blog
+        {% endblock %}
+    </title>
+    <link rel="icon" href="{% static 'blogapp/image/blog.png' %}">
 </head>
 <body>
-
+{% block menu %}
+{% endblock %}
+{% block body %}
+{% endblock %}
+{% block side %}
+{% endblock %}
+{% block bottom %}
+{% endblock %}
 </body>
 </html>

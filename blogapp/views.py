@@ -7,6 +7,9 @@ from django.views import View
 class IndexView(View):
     pass
 
+    def get(self, request):
+        return render(request, 'blogapp/index.html')
+
 
 class AboutView(DetailView):
     pass
