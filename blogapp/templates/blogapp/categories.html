@@ -1,1 +1,7 @@
 {% extends 'blogapp/base.html' %}
+{% block body %}
+    {% for category in categories %}
+        <p>{{ category.name }}</p>
+    {% endfor%}
+    <p>{{ now }}</p>
+{% endblock %}

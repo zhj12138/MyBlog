@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+<link rel="stylesheet" href="{% static 'blogapp/css/base.css' %}">
+{% block load %}
+{% endblock %}
 <head>
     <meta charset="UTF-8">
     <title>
@@ -8,16 +11,36 @@
             Snow zhao's Blog
         {% endblock %}
     </title>
-    <link rel="icon" href="{% static 'blogapp/image/blog.png' %}">
+    <link rel="icon" href="{% static 'blogapp/image/blog.svg' %}">
 </head>
 <body>
-{% block menu %}
-{% endblock %}
+<div class="container">
+<header>
+    <nav>
+        <ul>
+            <li>Snow zhao's blog</li>
+            <li><a href="{% url 'blogapp:index' %}">Index</a></li>
+            <li><a href="{% url 'blogapp:categories' %}">Categories</a></li>
+            <li><a href="{% url 'blogapp:tags' %}">Tags</a></li>
+            <li><a href="{% url 'blogapp:archives' %}">Archives</a></li>
+            <li><a href="{% url 'blogapp:links' %}">Links</a></li>
+            <li><a href="{% url 'blogapp:about' %}">About</a></li>
+        </ul>
+    </nav>
+</header>
 {% block body %}
 {% endblock %}
 {% block side %}
 {% endblock %}
-{% block bottom %}
-{% endblock %}
+<footer>
+    <nav>
+        <ul>
+            <li><a href="https://github.com/zhj12138"><img src="{% static 'blogapp/image/GitHub.svg'%}" alt="github" height="25px"> </a> </li>
+            <li><a href="mailto:1550223143@qq.com"><img src="{% static 'blogapp/image/Email.svg'%}" alt="email" height="25px"></a> </li>
+            <li>&copy; 2020 Snow Zhao</li>
+        </ul>
+    </nav>
+</footer>
+</div>
 </body>
 </html>

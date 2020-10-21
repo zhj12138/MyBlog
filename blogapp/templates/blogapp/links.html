@@ -1,0 +1,6 @@
+{% extends 'blogapp/base.html' %}
+{% block body %}
+    {% for link in links %}
+        <p>{{ link.name }}</p>
+    {% endfor %}
+{% endblock %}

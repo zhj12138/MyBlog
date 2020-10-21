@@ -1,1 +1,70 @@
 {% extends 'blogapp/base.html' %}
+{% load static %}
+{% block load %}
+    <link rel="stylesheet" href="{% static 'blogapp/css/index.css' %}">
+{% endblock %}
+{% block body %}
+<section class="blogs">
+{% for article in showArticles %}
+    <article>
+        {% if article.image %}
+            <figure>
+                <img src="{{ article.image.url }}" alt="image" height="100px" width="180px">
+            </figure>
+        {% endif %}
+            <hgroup>
+                <h2>{{ article.title }}</h2>
+            </hgroup>
+            <p>{{ article.outline }}</p>
+    </article>
+{% endfor %}
+<span class="step-links">
+        {% if page.has_previous %}
+            <a href="?page={{ page.previous_page_number }}">{{ page.previous_page_number }}</a>
+        {% endif %}
+
+        <span class="current">
+            <a href="?page={{ page.number }}">{{ page.number }}</a>
+        </span>
+
+        {% if page.has_next %}
+            <a href="?page={{ page.next_page_number }}">{{ page.next_page_number }}</a>
+        {% endif %}
+</span>
+</section>
+
+{% endblock body %}
+{% block side %}
+<aside>
+    <section class="mostViewedArticles">
+        <h2>Most Viewed Articles</h2>
+        {% for article in mostViewedArticles %}
+            <a href="{% url 'blogapp:articles' article.name_slug %}">{{ article.title }}</a>
+        {% endfor %}
+    </section>
+    <section class="recentArticles">
+        <h2>Recent Articles</h2>
+        {% for article in recentArticles %}
+            <a href="{% url 'blogapp:articles' article.name_slug %}">{{ article.title }}</a>
+        {% endfor %}
+    </section>
+    <section class="categories">
+        <h2>Categories</h2>
+        {% for category in categories %}
+            <a href="{% url 'blogapp:detail_category' category.name_slug %}">{{ category.name }}</a>
+        {% endfor %}
+    </section>
+    <section class="tags">
+        <h2>Tags</h2>
+        {% for tag in tags %}
+            <a href="{% url 'blogapp:detail_tag' tag.name_slug %}">{{ tag.name }}</a>
+        {% endfor %}
+    </section>
+    <section class="links">
+        <h2>Links</h2>
+        {% for link in links %}
+            <a href="{{ link.url }}">{{ link.name }}</a>
+        {% endfor %}
+    </section>
+</aside>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'blogapp/base.html' %}
+{% block body %}
+    {% for article in articles %}
+        {{ article.title }}
+    {% endfor %}
+{% endblock %}

@@ -1,1 +1,6 @@
 {% extends 'blogapp/base.html' %}
+{% block body %}
+    {% for tag in tags %}
+        {{ tag.name }}
+    {% endfor %}
+{% endblock %}
