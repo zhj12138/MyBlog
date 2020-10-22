@@ -1,4 +1,35 @@
 {% extends 'blogapp/base.html' %}
+{% load static %}
+{% block load %}
+    <link rel="stylesheet" href="{% static 'blogapp/css/about.css' %}">
+{% endblock %}
 {% block body %}
-    {{ me.name }}
+    <section class="myInformation">
+        {% if me.photo %}
+        <img src="{{ me.photo.url }}" alt="photo" class="myPhoto">
+        {% endif %}
+        <p>姓名: {{ me.name }}</p>
+        {% if me.interests %}
+        <p>爱好: {{ me.interests }}</p>
+        {% endif %}
+        {% if me.school %}
+        <p>学校: {{ me.school }}</p>
+        {% endif %}
+        {% if me.company %}
+        <p>公司: {{ me.company }}</p>
+        {% endif %}
+        {% if me.address %}
+        <p>地址: {{ me.address }}</p>
+        {% endif %}
+        {% if me.email %}
+        <p><a href="mailto:{{ me.email }}">邮箱: {{ me.email }}</a></p>
+        {% endif %}
+        {% if me.github %}
+        <p><a href="{{ me.github }}">Github: {{ me.github }}</a></p>
+        {% endif %}
+        {% if me.brief_introduction %}
+        <p>个人介绍</p>
+        <p class="introduction">{{ me.brief_introduction }}</p>
+        {% endif %}
+    </section>
 {% endblock %}

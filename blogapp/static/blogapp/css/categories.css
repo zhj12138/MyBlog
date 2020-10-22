@@ -1,0 +1,64 @@
+h1{
+    text-align: center;
+    font-family: Georgia, Times, serif;
+    color: #de6581;
+}
+.column{
+    border-radius: 10px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 5%;
+    /*margin-right: 5%;*/
+    width: 27%;
+    height: 30%;
+    float: left;
+    border: 1px solid black;
+    background-color: #eeeeee;
+    transition: all 1s;
+    /*padding-left: 5%;*/
+}
+.column:hover{
+    background-color: rgb(183, 235, 241);
+}
+h2.anima:after {
+  content: '»';
+  /*position: absolute;*/
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+h2.anima:hover:after {
+  opacity: 1;
+  right: 0;
+}
+.column h2{
+    text-align: center;
+    font-family: "JetBrains Mono", serif;
+    color: rgb(31, 160, 174);
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.pagination{
+    text-align: center;
+}
+.step-links a{
+    color: black;
+    transition: color 1s;
+    text-decoration: none;
+}
+.step-links a:visited{
+    color: black;
+}
+.step-links a:hover{
+    color: rgb(31, 160, 174);
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}

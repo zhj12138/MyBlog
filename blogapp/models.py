@@ -100,12 +100,14 @@ class Link(models.Model):
 
 class Me(models.Model):
     name = models.CharField(max_length=128)
+    photo = models.ImageField(blank=True)
     email = models.EmailField()
     brief_introduction = models.TextField()
     interests = models.CharField(max_length=128, blank=True)
     school = models.CharField(max_length=128, blank=True)
     company = models.CharField(max_length=128, blank=True)
     address = models.CharField(max_length=128, blank=True)
+    github = models.URLField(blank=True)
 
     def __str__(self):
         return self.name

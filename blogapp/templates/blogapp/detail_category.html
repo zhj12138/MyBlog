@@ -1,6 +1,61 @@
 {% extends 'blogapp/base.html' %}
+{% load static %}
+{% block load %}
+    <link rel="stylesheet" href="{% static 'blogapp/css/category.css' %}">
+{% endblock %}
 {% block body %}
-    {% for article in articles %}
-        <p>{{ article.title }}</p>
-    {% endfor %}
+    <h1>{{ category.name }}</h1>
+    <section class="blogs">
+        {% for article in page_obj %}
+            <a href="{% url 'blogapp:articles' article.name_slug %}">
+                <article>
+                    {% if article.image %}
+                        <figure>
+                            <img src="{{ article.image.url }}" alt="image" height="100px" width="180px">
+                        </figure>
+                    {% endif %}
+                    <hgroup>
+                        <h2>{{ article.title }}</h2>
+                    </hgroup>
+                    <p class="viewlike"><img src="{% static 'blogapp/image/view.svg' %}" alt="view"
+                                             width="2%">{{ article.views }} <img
+                            src="{% static 'blogapp/image/like.svg' %}" alt="view" width="2%">{{ article.likes }}</p>
+                    <p class="outline">{{ article.outline }}</p>
+                </article>
+            </a>
+        {% endfor %}
+        <span class="step-links">
+        <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</span>
+    </section>
+    <aside>
+        {% if category.brief_introduction %}
+        <section class="briefIntro">
+            <h2 class="introduction">Brief Introduction</h2>
+            <p class="introContent">{{ category.brief_introduction }}</p>
+        </section>
+        {% endif %}
+        <section class="categories">
+            <h2>All Categories</h2>
+            {% for category in allCate %}
+                <a href="{% url 'blogapp:detail_category' category.name_slug %}">{{ category.name }}</a>
+            {% endfor %}
+        </section>
+    </aside>
 {% endblock %}

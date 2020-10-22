@@ -1,9 +1,6 @@
 section, aside{
     display: block;
 }
-@font-face {
-    font-family: Aroma;
-}
 /*section.main_part{*/
 /*    */
 /*}*/
@@ -11,8 +8,8 @@ h1.title{
     text-align: center;
     padding-bottom: 2%;
     /*height: 10%;*/
-    color: rgb(31, 160, 174);
-    font-family: Aroma, serif;
+    font-family: "JetBrains Mono", Times, serif;
+    color: rgb(31, 160, 174)
 }
 article{
     float: left;
@@ -34,6 +31,9 @@ div a{
 }
 div.toc a:hover{
     text-decoration: underline;
+    /*background-color: #eeeeee;*/
+    /*color: white;*/
+    /*box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);*/
 }
 div ul{
     list-style: none;

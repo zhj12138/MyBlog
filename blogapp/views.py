@@ -64,16 +64,25 @@ class CategoryView(ListView):
     model = Category
     context_object_name = 'categories'
     template_name = 'blogapp/categories.html'
+    paginate_by = 9
 
 
 class DetailCategoryView(ListView):
     model = Article
     context_object_name = 'articles'
     template_name = 'blogapp/detail_category.html'
+    paginate_by = 5
 
     def get_queryset(self, **kwargs):
         cate = get_object_or_404(Category, name_slug=self.kwargs['category_name'])
         return super(DetailCategoryView, self).get_queryset().filter(category=cate)
+    
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DetailCategoryView, self).get_context_data(**kwargs)
+        cate = get_object_or_404(Category, name_slug=self.kwargs['category_name'])
+        context['category'] = cate
+        context['allCate'] = Category.objects.all()
+        return context
 
 
 class TagView(ListView):
@@ -86,21 +95,30 @@ class DetailTagView(ListView):
     model = Article
     context_object_name = 'articles'
     template_name = 'blogapp/detail_tag.html'
+    paginate_by = 5
 
     def get_queryset(self, **kwargs):
         tag = get_object_or_404(Tag, name_slug=self.kwargs['tag_name'])
         return super(DetailTagView, self).get_queryset().filter(tag=tag)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(DetailTagView, self).get_context_data(**kwargs)
+        tag = get_object_or_404(Tag, name_slug=self.kwargs['tag_name'])
+        context['tag'] = tag
+        context['allTag'] = Tag.objects.all()
+        return context
 
 
 class ArchiveView(ListView):
     model = Article
     context_object_name = 'articles'
     template_name = 'blogapp/archive.html'
-    paginate_by = 20
+    paginate_by = 10
+    queryset = Article.objects.order_by('-pub_date')
 
 
 class LinkView(ListView):
     model = Link
     context_object_name = 'links'
     template_name = 'blogapp/links.html'
-    paginate_by = 10
+    paginate_by = 6

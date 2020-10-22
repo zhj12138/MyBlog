@@ -1,6 +1,30 @@
 {% extends 'blogapp/base.html' %}
+{% load static %}
+{% block load %}
+    <link rel="stylesheet" href="{% static 'blogapp/css/archive.css' %}">
+{% endblock %}
 {% block body %}
+    <h1>Archives</h1>
+    <div class="archive">
     {% for article in articles %}
-        <p>{{ article.title }}</p>
+        <div class="piece">{{ article.pub_date|date:'Y/n/j H:i:s ' }} <a href="{% url 'blogapp:articles' article.name_slug %}">{{ article.title }}</a></div>
     {% endfor %}
+    </div>
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+    </div>
 {% endblock %}

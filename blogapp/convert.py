@@ -1,7 +1,7 @@
 import markdown
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
-from pymdownx import superfences, magiclink, caret, betterem, mark, tasklist, tilde, inlinehilite, critic, highlight, \
+from pymdownx import superfences, magiclink, caret, betterem, mark, tasklist, tilde, emoji, inlinehilite, critic, highlight, \
     _bypassnorm
 import mdx_math
 
@@ -33,7 +33,7 @@ extensions = [
     'pymdownx.highlight',  # 高亮显示代码
     'pymdownx.tasklist',  # 任务列表
     'pymdownx.tilde',  # 删除线
-    # 'pymdownx.emoji',
+    'pymdownx.emoji',
     'pymdownx.inlinehilite',
     # 'pymdownx.arithmatex',
     'pymdownx.critic',

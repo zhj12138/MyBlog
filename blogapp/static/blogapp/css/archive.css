@@ -1,0 +1,42 @@
+h1{
+    text-align: center;
+    font-family: Georgia, Times, serif;
+    color: #de6581;
+}
+.archive{
+    width: 60%;
+    margin-left: 20%;
+    /*border: 1px solid black;*/
+    font-family: "Jokerman", "华文行楷", serif;
+    font-size: 1.5em;
+    background-color: white;
+}
+div.piece{
+    padding-bottom: 2%;
+}
+.piece a{
+    text-decoration: none;
+    color: rgb(85, 26, 139);
+    transition: color 0.5s;
+}
+.piece a:visited{
+    color: rgb(85, 26, 139);
+}
+.piece a:hover{
+    color: rgb(31, 160, 174);
+}
+.pagination{
+    text-align: center;
+    margin-bottom: 4%;
+}
+.step-links a{
+    color: black;
+    transition: color 1s;
+    text-decoration: none;
+}
+.step-links a:visited{
+    color: black;
+}
+.step-links a:hover{
+    color: rgb(31, 160, 174);
+}
