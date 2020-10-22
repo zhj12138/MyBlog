@@ -10,19 +10,19 @@ class LinkAdmin(admin.ModelAdmin):
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ("title", 'name_slug', 'mod_date')
-    exclude = ['name_slug']
+    exclude = ['name_slug', 'likes', 'views']
     # prepopulated_fields = {"name_slug": ("title", )}
 
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "name_slug", 'mod_date')
-    exclude = ['name_slug']
+    exclude = ['name_slug', 'article_num', 'total_views', 'total_likes']
     # prepopulated_fields = {'name_slug': (slugify('name'),)}
 
 
 class TagAdmin(admin.ModelAdmin):
     list_display = ("name", "name_slug")
-    exclude = ['name_slug']
+    exclude = ['name_slug', 'article_num', 'total_views', 'total_likes']
     # prepopulated_fields = {'name_slug': ('name', )}
 
 

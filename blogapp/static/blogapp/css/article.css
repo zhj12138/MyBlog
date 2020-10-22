@@ -1,0 +1,57 @@
+section, aside{
+    display: block;
+}
+@font-face {
+    font-family: Aroma;
+}
+/*section.main_part{*/
+/*    */
+/*}*/
+h1.title{
+    text-align: center;
+    padding-bottom: 2%;
+    /*height: 10%;*/
+    color: rgb(31, 160, 174);
+    font-family: Aroma, serif;
+}
+article{
+    float: left;
+    padding-left: 10%;
+    width: 65%;
+    /*overflow: scroll;*/
+}
+aside.tocbar{
+    float: right;
+    width: 20%;
+    position: fixed;
+    right: 4%;
+    top: 15%;
+    z-index: 10;
+}
+div a{
+    text-decoration: none;
+    color: rgb(67, 118, 215);
+}
+div.toc a:hover{
+    text-decoration: underline;
+}
+div ul{
+    list-style: none;
+}
+input.dfahskjdfhaks{
+    /*background-color: #4CAF50; !* Green *!*/
+    border: none;
+    /*color: white;*/
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: all 2s;
+    cursor: pointer;
+}
+input.dfahskjdfhaks:hover{
+    background-color: #eeeeee;
+    /*color: white;*/
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}

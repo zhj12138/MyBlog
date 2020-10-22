@@ -6,6 +6,7 @@
 {% block body %}
 <section class="blogs">
 {% for article in showArticles %}
+    <a href="{% url 'blogapp:articles' article.name_slug %}">
     <article>
         {% if article.image %}
             <figure>
@@ -15,8 +16,10 @@
             <hgroup>
                 <h2>{{ article.title }}</h2>
             </hgroup>
-            <p>{{ article.outline }}</p>
+            <p class="viewlike"><img src="{% static 'blogapp/image/view.svg' %}" alt="view" width="2%">{{ article.views }} <img src="{% static 'blogapp/image/like.svg' %}" alt="view" width="2%">{{ article.likes }}</p>
+            <p class="outline">{{ article.outline }}</p>
     </article>
+    </a>
 {% endfor %}
 <span class="step-links">
         {% if page.has_previous %}

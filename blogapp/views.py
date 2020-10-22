@@ -5,19 +5,26 @@ from django.views import View
 from .models import Category, Tag, Article, Link, Me
 
 
+def like(request):
+    if request.method == 'POST':
+        article = get_object_or_404(Article, name_slug=request.POST['name_slug'])
+        article.likes += int(request.POST['add'])
+        article.save()
+
+
 # Create your views here.
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):
         context = {}
-        allArticles = Article.objects.order_by('-mod_date')
+        allArticles = Article.objects.order_by('-pub_date')
         paginator = Paginator(allArticles, 5)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context['page'] = page_obj
         context['showArticles'] = page_obj.object_list
         context['mostViewedArticles'] = Article.objects.order_by('-views')[:5]
-        context['recentArticles'] = Article.objects.order_by('-pub_date')[:5]
+        context['recentArticles'] = allArticles[:5]
         context['categories'] = Category.objects.all()
         context['tags'] = Tag.objects.all()
         context['links'] = Link.objects.all()
@@ -46,6 +53,9 @@ class ArticleView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        self.object.views += 1
+        self.object.save()
+        context['text'], context['toc'] = self.object.getFileText()
         # context['now'] = "Hello world"
         return context
 
