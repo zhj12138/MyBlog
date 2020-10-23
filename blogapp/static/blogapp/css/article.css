@@ -1,6 +1,32 @@
+@font-face {
+    font-family: "JetBrains Mono", 华文隶书;
+}
 section, aside{
     display: block;
 }
+section.CatTag li{
+    display: inline;
+}
+li.head{
+    margin-left: 8%;
+    font-family: "JetBrains Mono", serif;
+    font-weight: bold;
+    color: #de6581;
+}
+li.body{
+    color: white;
+    font-family: "JetBrains Mono", serif;
+    border-radius: 4px;
+    background-color: #de6581;
+    margin-left: 1%;
+}
+a.bodya{
+    color: white;
+}
+a.bodya:visited{
+    color: white;
+}
+
 /*section.main_part{*/
 /*    */
 /*}*/

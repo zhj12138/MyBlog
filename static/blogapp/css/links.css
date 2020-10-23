@@ -1,0 +1,43 @@
+h1{
+    text-align: center;
+    font-family: Georgia, Times, serif;
+    color: #de6581;
+}
+section.links{
+    width: 60%;
+    margin-left: 20%;
+}
+p.introduction{
+    /*border-top: 1px solid #665544;*/
+    /*border-bottom: 1px solid #665544;*/
+    font-size: 130%;
+    font-family:  "楷体", serif;
+    background-color: #eeeeee;
+}
+a.others{
+    color: rgb(85, 26, 139);
+    text-decoration: none;
+    transition: color 0.5s;
+    font-family: "华文行楷", serif;
+}
+a.others:visited{
+    color: rgb(85, 26, 139)
+}
+a.others:hover{
+    color: rgb(31, 160, 174);
+}
+.pagination{
+    text-align: center;
+    margin-bottom: 4%;
+}
+.step-links a{
+    color: black;
+    transition: color 1s;
+    text-decoration: none;
+}
+.step-links a:visited{
+    color: black;
+}
+.step-links a:hover{
+    color: rgb(31, 160, 174);
+}

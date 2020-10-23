@@ -1,0 +1,19 @@
+section.myInformation{
+    text-align: center;
+}
+img.myPhoto{
+    margin-top: 3%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.myInformation a{
+    text-decoration: none;
+    color: black;
+}
+.myInformation a:visited{
+    color: black;
+}
+.myInformation a:hover{
+    color: rgb(66, 147, 156);
+}

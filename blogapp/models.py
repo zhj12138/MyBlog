@@ -20,8 +20,6 @@ class Article(models.Model):
     image = models.ImageField(upload_to='img', blank=True)
 
     def save(self, *args, **kwargs):
-        if not self.outline:
-            self.outline = getOutline(self.file.read().decode('utf-8'))
         self.name_slug = slugify(self.title)
         super(Article, self).save(*args, **kwargs)
 
@@ -29,7 +27,8 @@ class Article(models.Model):
         return self.title
 
     def getFileText(self):
-        return md2html(self.file.read().decode('utf-8'))
+        text = self.file.read()
+        return md2html(text.decode('utf-8'))
 
     # def addLike(self):
     #     print('add like')

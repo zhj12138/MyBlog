@@ -13,8 +13,25 @@
 {% endblock %}
 {% block body %}
     <h1 class="title">{{ article.title }}</h1>
+    <section class="CatTag">
+        {% if article.category_set.all %}
+        <ul class="category">
+            <li class="head">Categories:</li>
+        {% for category in article.category_set.all %}
+            <li class="body"><a href="{% url 'blogapp:detail_category' category.name_slug %}" class="bodya">{{ category.name }}</a></li>
+        {% endfor %}
+        {% endif %}
+        </ul>
+        {% if article.tag_set.all %}
+        <ul>
+            <li class="head">Tags:</li>
+        {% for tag in article.tag_set.all %}
+            <li class="body"><a href="{% url 'blogapp:detail_tag' tag.name_slug%}" class="bodya">{{ tag.name }}</a> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
     <section class="main_part">
-
         <article class="markdown-body">
             {{ text|safe }}
         </article>
@@ -24,6 +41,7 @@
         {% csrf_token %}
         <input type="submit" value="点赞" id="like" class="dfahskjdfhaks">
     </aside>
+
 {% endblock %}
 {% block script %}
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
